@@ -28,18 +28,11 @@
     pointer-events: none;
   }
 
-  .bg-shapes {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
+  .bg-shapes { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .bg-shapes svg { width: 100%; height: 100%; }
 
-  nav, section, .cards, .skills-section, footer, .divider { position: relative; z-index: 1; }
+  nav, section, .cards, footer, .divider { position: relative; z-index: 1; }
 
-  /* NAV */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.4rem 3rem;
@@ -51,7 +44,6 @@
   nav ul a { text-decoration: none; color: #5a4a3a; font-family: 'Arial', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.2s; }
   nav ul a:hover { color: #c47a50; }
 
-  /* HERO */
   .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5rem 2rem 3rem; text-align: center; }
   .avatar {
     width: 110px; height: 110px; border-radius: 50%; overflow: hidden;
@@ -64,16 +56,13 @@
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
   .avatar img.hidden { display: none; }
+
   .hero h1 { font-size: 3rem; color: #2e241c; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
   .hero .tagline { font-family: 'Arial', sans-serif; font-size: 1.05rem; color: #7a6a5a; margin-bottom: 1rem; line-height: 1.6; }
   .hero .tagline span { color: #c47a50; font-weight: bold; }
 
   .highlights { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 1.6rem; }
-  .badge {
-    background: #fdf0e6; border: 1px solid #e8d0bb; border-radius: 999px;
-    padding: 0.3rem 0.9rem; font-size: 0.82rem; color: #7a5c44;
-    font-family: 'Arial', sans-serif;
-  }
+  .badge { background: #fdf0e6; border: 1px solid #e8d0bb; border-radius: 999px; padding: 0.3rem 0.9rem; font-size: 0.82rem; color: #7a5c44; font-family: 'Arial', sans-serif; }
 
   .contact-pill {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -88,42 +77,21 @@
 
   .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #d4a882, #c47a50); border-radius: 2px; margin: 0.8rem auto 3.5rem; }
 
-  /* CARDS */
-  .cards {
-    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
-    padding: 0 2rem 4rem; max-width: 900px; margin: 0 auto;
-  }
+  .cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; padding: 0 2rem 4rem; max-width: 900px; margin: 0 auto; }
   .card {
     background: #fffdf9; border: 1px solid #e8ddd4; border-radius: 16px;
     padding: 2rem; flex: 1 1 240px; max-width: 270px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;
   }
   .card:hover { transform: translateY(-4px); box-shadow: 0 6px 24px rgba(0,0,0,0.09); }
-  .card-icon {
-    font-size: 2rem; margin-bottom: 1rem; background: #fdf0e6;
-    width: 52px; height: 52px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .card-icon { font-size: 2rem; margin-bottom: 1rem; background: #fdf0e6; width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
   .card h3 { font-size: 1rem; color: #2e241c; margin-bottom: 0.4rem; font-family: 'Arial', sans-serif; }
   .card p { font-size: 0.88rem; color: #7a6a5a; line-height: 1.6; }
 
-  /* ABOUT */
   .about { max-width: 660px; margin: 0 auto 3.5rem; padding: 0 2rem; text-align: center; }
   .about h2 { font-size: 1.6rem; color: #2e241c; margin-bottom: 1rem; }
   .about p { font-size: 0.97rem; color: #6a5a4a; line-height: 1.85; margin-bottom: 0.9rem; }
 
-  /* SKILLS */
-  .skills-section { max-width: 720px; margin: 0 auto 5rem; padding: 0 2rem; text-align: center; }
-  .skills-section h2 { font-size: 1.6rem; color: #2e241c; margin-bottom: 1.5rem; }
-  .skill-groups { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
-  .skill-group {
-    background: #fffdf9; border: 1px solid #e8ddd4; border-radius: 12px;
-    padding: 1rem 1.4rem; text-align: left; flex: 1 1 190px; max-width: 320px;
-  }
-  .skill-group h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #c47a50; margin-bottom: 0.5rem; font-family: 'Arial', sans-serif; }
-  .skill-group p { font-size: 0.85rem; color: #6a5a4a; line-height: 1.6; }
-
-  /* FOOTER */
   footer {
     text-align: center; padding: 2rem;
     font-family: 'Arial', sans-serif; font-size: 0.82rem; color: #aaa09a;
@@ -135,27 +103,20 @@
 
 <div class="bg-shapes">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <!-- large soft circle top-left -->
     <circle cx="120" cy="120" r="320" fill="rgba(212,168,130,0.10)"/>
-    <!-- medium circle bottom-right -->
     <circle cx="1340" cy="820" r="260" fill="rgba(196,122,80,0.09)"/>
-    <!-- small accent circle mid-right -->
     <circle cx="1300" cy="200" r="120" fill="rgba(253,240,230,0.18)"/>
-    <!-- decorative rings -->
     <circle cx="120" cy="120" r="420" fill="none" stroke="rgba(196,122,80,0.07)" stroke-width="1.5"/>
     <circle cx="120" cy="120" r="510" fill="none" stroke="rgba(196,122,80,0.05)" stroke-width="1"/>
     <circle cx="1340" cy="820" r="340" fill="none" stroke="rgba(212,168,130,0.07)" stroke-width="1.5"/>
-    <!-- subtle dot grid -->
     <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.2" fill="rgba(196,122,80,0.13)"/>
     </pattern>
     <rect x="700" y="0" width="740" height="420" fill="url(#dots)"/>
     <rect x="0" y="520" width="400" height="380" fill="url(#dots)"/>
-    <!-- diagonal accent lines top-right -->
     <line x1="1100" y1="0" x2="1440" y2="340" stroke="rgba(212,168,130,0.10)" stroke-width="1"/>
     <line x1="1160" y1="0" x2="1440" y2="280" stroke="rgba(212,168,130,0.07)" stroke-width="1"/>
     <line x1="1220" y1="0" x2="1440" y2="220" stroke="rgba(212,168,130,0.05)" stroke-width="1"/>
-    <!-- small decorative squares -->
     <rect x="680" y="60" width="18" height="18" rx="3" fill="rgba(196,122,80,0.10)" transform="rotate(20 689 69)"/>
     <rect x="760" y="110" width="12" height="12" rx="2" fill="rgba(212,168,130,0.13)" transform="rotate(35 766 116)"/>
     <rect x="200" y="700" width="22" height="22" rx="3" fill="rgba(196,122,80,0.08)" transform="rotate(-15 211 711)"/>
@@ -167,10 +128,7 @@
   <div class="logo">BM</div>
   <ul>
     <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
     <li><a href="resume.html">Resume</a></li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#">Contact</a></li>
   </ul>
 </nav>
 
@@ -199,7 +157,7 @@
 
 <div class="divider"></div>
 
-  <div class="cards">
+<div class="cards">
   <div class="card">
     <div class="card-icon">📊</div>
     <h3>Data Science</h3>
