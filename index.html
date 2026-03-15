@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bryan Ma</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f5f0eb;
+    color: #3a3530;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 700px 500px at 10% 15%, rgba(212,168,130,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 400px at 90% 80%, rgba(196,122,80,0.13) 0%, transparent 65%),
+      radial-gradient(ellipse 400px 300px at 60% 30%, rgba(253,240,230,0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .bg-shapes {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bg-shapes svg { width: 100%; height: 100%; }
+
+  nav, section, .cards, .skills-section, footer, .divider { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 3rem;
+    background: #fffdf9; border-bottom: 1px solid #e8ddd4;
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.04em; color: #7a5c44; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { text-decoration: none; color: #5a4a3a; font-family: 'Arial', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.2s; }
+  nav ul a:hover { color: #c47a50; }
+
+  /* HERO */
+  .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5rem 2rem 3rem; text-align: center; }
+  .avatar {
+    width: 110px; height: 110px; border-radius: 50%; overflow: hidden;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 4px 20px rgba(196,122,80,0.25);
+    border: 3px solid #e8ddd4;
+    background: linear-gradient(135deg, #d4a882, #c47a50);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem; color: #fff;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .avatar img.hidden { display: none; }
+  .hero h1 { font-size: 3rem; color: #2e241c; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+  .hero .tagline { font-family: 'Arial', sans-serif; font-size: 1.05rem; color: #7a6a5a; margin-bottom: 1rem; line-height: 1.6; }
+  .hero .tagline span { color: #c47a50; font-weight: bold; }
+
+  .highlights { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 1.6rem; }
+  .badge {
+    background: #fdf0e6; border: 1px solid #e8d0bb; border-radius: 999px;
+    padding: 0.3rem 0.9rem; font-size: 0.82rem; color: #7a5c44;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #fffdf9; border: 1.5px solid #e0cfc4;
+    padding: 0.55rem 1.3rem; border-radius: 999px;
+    font-family: 'Arial', sans-serif; font-size: 0.9rem; color: #5a4a3a;
+    cursor: pointer; transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .contact-pill:hover { background: #c47a50; color: #fff; border-color: #c47a50; }
+  .contact-pill svg { width: 16px; height: 16px; }
+
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #d4a882, #c47a50); border-radius: 2px; margin: 0.8rem auto 3.5rem; }
+
+  /* CARDS */
+  .cards {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    padding: 0 2rem 4rem; max-width: 900px; margin: 0 auto;
+  }
+  .card {
+    background: #fffdf9; border: 1px solid #e8ddd4; border-radius: 16px;
+    padding: 2rem; flex: 1 1 240px; max-width: 270px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 6px 24px rgba(0,0,0,0.09); }
+  .card-icon {
+    font-size: 2rem; margin-bottom: 1rem; background: #fdf0e6;
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card h3 { font-size: 1rem; color: #2e241c; margin-bottom: 0.4rem; font-family: 'Arial', sans-serif; }
+  .card p { font-size: 0.88rem; color: #7a6a5a; line-height: 1.6; }
+
+  /* ABOUT */
+  .about { max-width: 660px; margin: 0 auto 3.5rem; padding: 0 2rem; text-align: center; }
+  .about h2 { font-size: 1.6rem; color: #2e241c; margin-bottom: 1rem; }
+  .about p { font-size: 0.97rem; color: #6a5a4a; line-height: 1.85; margin-bottom: 0.9rem; }
+
+  /* SKILLS */
+  .skills-section { max-width: 720px; margin: 0 auto 5rem; padding: 0 2rem; text-align: center; }
+  .skills-section h2 { font-size: 1.6rem; color: #2e241c; margin-bottom: 1.5rem; }
+  .skill-groups { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
+  .skill-group {
+    background: #fffdf9; border: 1px solid #e8ddd4; border-radius: 12px;
+    padding: 1rem 1.4rem; text-align: left; flex: 1 1 190px; max-width: 320px;
+  }
+  .skill-group h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #c47a50; margin-bottom: 0.5rem; font-family: 'Arial', sans-serif; }
+  .skill-group p { font-size: 0.85rem; color: #6a5a4a; line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    font-family: 'Arial', sans-serif; font-size: 0.82rem; color: #aaa09a;
+    border-top: 1px solid #e8ddd4; background: #fffdf9;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-shapes">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- large soft circle top-left -->
+    <circle cx="120" cy="120" r="320" fill="rgba(212,168,130,0.10)"/>
+    <!-- medium circle bottom-right -->
+    <circle cx="1340" cy="820" r="260" fill="rgba(196,122,80,0.09)"/>
+    <!-- small accent circle mid-right -->
+    <circle cx="1300" cy="200" r="120" fill="rgba(253,240,230,0.18)"/>
+    <!-- decorative rings -->
+    <circle cx="120" cy="120" r="420" fill="none" stroke="rgba(196,122,80,0.07)" stroke-width="1.5"/>
+    <circle cx="120" cy="120" r="510" fill="none" stroke="rgba(196,122,80,0.05)" stroke-width="1"/>
+    <circle cx="1340" cy="820" r="340" fill="none" stroke="rgba(212,168,130,0.07)" stroke-width="1.5"/>
+    <!-- subtle dot grid -->
+    <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="rgba(196,122,80,0.13)"/>
+    </pattern>
+    <rect x="700" y="0" width="740" height="420" fill="url(#dots)"/>
+    <rect x="0" y="520" width="400" height="380" fill="url(#dots)"/>
+    <!-- diagonal accent lines top-right -->
+    <line x1="1100" y1="0" x2="1440" y2="340" stroke="rgba(212,168,130,0.10)" stroke-width="1"/>
+    <line x1="1160" y1="0" x2="1440" y2="280" stroke="rgba(212,168,130,0.07)" stroke-width="1"/>
+    <line x1="1220" y1="0" x2="1440" y2="220" stroke="rgba(212,168,130,0.05)" stroke-width="1"/>
+    <!-- small decorative squares -->
+    <rect x="680" y="60" width="18" height="18" rx="3" fill="rgba(196,122,80,0.10)" transform="rotate(20 689 69)"/>
+    <rect x="760" y="110" width="12" height="12" rx="2" fill="rgba(212,168,130,0.13)" transform="rotate(35 766 116)"/>
+    <rect x="200" y="700" width="22" height="22" rx="3" fill="rgba(196,122,80,0.08)" transform="rotate(-15 211 711)"/>
+    <rect x="1100" y="600" width="16" height="16" rx="2" fill="rgba(212,168,130,0.10)" transform="rotate(25 1108 608)"/>
+  </svg>
+</div>
+
+<nav>
+  <div class="logo">BM</div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="avatar" id="avatar">
+    <img src="https://media.licdn.com/dms/image/v2/D4E03AQHPj0m8afXW_g/profile-displayphoto-scale_400_400/B4EZmWRIQuKcAg-/0/1759162701608?e=1775088000&v=beta&t=dVSBEJEtNeuA6WjFboQ1mFiSAQOe4_PqCmSGx7DJjUw"
+         alt="Bryan Ma"
+         onerror="this.classList.add('hidden'); document.getElementById('avatar-fallback').style.display='block';">
+    <span id="avatar-fallback" style="display:none;">B</span>
+  </div>
+  <h1>Bryan Ma</h1>
+  <p class="tagline"><span>Data Science & Economics</span> · Northeastern University</p>
+  <div class="highlights">
+    <span class="badge">National Merit Scholar</span>
+    <span class="badge">Dean's List — All Semesters</span>
+    <span class="badge">GPA: 3.9 / 4.0</span>
+  </div>
+  <button class="contact-pill" onclick="copyEmail(this)" title="Click to copy email">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <polyline points="2,4 12,13 22,4"/>
+    </svg>
+    <span id="email-label">ma.bry@northeastern.edu</span>
+  </button>
+</section>
+
+<div class="divider"></div>
+
+  <div class="cards">
+  <div class="card">
+    <div class="card-icon">📊</div>
+    <h3>Data Science</h3>
+    <p>Building models and pipelines with Python, machine learning, and data visualization to extract meaningful insights.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">📈</div>
+    <h3>Economics</h3>
+    <p>Analyzing market behavior and policy outcomes to understand the forces that drive real-world decisions.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">💻</div>
+    <h3>Software & Research</h3>
+    <p>From interning at a 3D rendering software firm to leading sentiment analysis research on White House data and markets.</p>
+  </div>
+</div>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>Hi, I'm Bryan, a student at Northeastern University studying Data Science and Economics. I'm passionate about uncovering the economic forces that shape our world through data — modeling market behavior, analyzing policy outcomes, and finding the story hidden in a dataset. I'm always looking to collaborate, build, and create something meaningful.</p>
+  <p>Outside of academics, I volunteer as an English teacher, have worked as a software development intern, and enjoy rock climbing, tennis, skiing, guitar, and reading. I'm also fluent in Mandarin Chinese and conversational in French.</p>
+  <br>
+  <a href="resume.html" style="display:inline-block; margin-top:0.5rem; font-family:'Arial',sans-serif; font-size:0.9rem; color:#c47a50; text-decoration:none; border-bottom: 1.5px solid #c47a50; padding-bottom:1px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">View Full Resume →</a>
+</section>
+
+<footer>
+  © 2026 Bryan Ma · ma.bry@northeastern.edu
+</footer>
+
+<script>
+  function copyEmail(btn) {
+    navigator.clipboard.writeText('ma.bry@northeastern.edu').then(() => {
+      const lbl = document.getElementById('email-label');
+      lbl.textContent = 'Copied!';
+      btn.style.background = '#c47a50';
+      btn.style.color = '#fff';
+      btn.style.borderColor = '#c47a50';
+      setTimeout(() => {
+        lbl.textContent = 'ma.bry@northeastern.edu';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
